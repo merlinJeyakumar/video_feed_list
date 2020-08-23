@@ -1,0 +1,124 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
+apply plugin: 'com.yanzhenjie.andserver'
+
+androidExtensions {
+    experimental = true
+}
+android {
+    compileSdkVersion 29
+    defaultConfig {
+        applicationId "com.merlin.training_mvvm"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
+
+        lintOptions {
+            checkReleaseBuilds false
+            // Or, if you prefer, you can continue to check for errors in release builds,
+            // but continue the build even when errors are found:
+            abortOnError false
+        }
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    dataBinding {
+        enabled = true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/INDEX.LIST'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+    }
+}
+
+androidExtensions {
+    experimental = true
+}
+
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar'])
+
+    api commonDependencies.values()
+    api fireBaseDependencies.values()
+    api roomDependencies.values()
+    api rxJavaDependencies.values()
+    api networkDependencies.values()
+    api jodaTimeDependencies.values()
+    api glideDependencies.values()
+
+    api libraries.phoneUtils
+    api libraries.facebook_stetho
+    api libraries.okhttp3_stetho
+    api libraries.anko_commons
+    api libraries.anko_jetbrains
+    api libraries.viewpager2
+    api libraries.shimmer
+    api libraries.c_t_layout_substitle
+    api libraries.lottie
+    api libraries.scale_image_view
+    api libraries.duration_picker
+
+    api group: 'com.fatboyindustrial.gson-jodatime-serialisers', name: 'gson-jodatime-serialisers', version: '1.8.0'
+    api basicLibraries.values()
+
+    api libraries.anko_jetbrains
+    api libraries.facebook_stetho
+    api libraries.okhttp3_stetho
+
+    api exo_player.values()
+    api rxJavaDependencies.values()
+    api networkDependencies.values()
+    api workManagerDependencies.values()
+    api roomDependencies.values()
+    api jodaTimeDependencies.values()
+    api basicLibraries.gson_lib
+
+    api richLinkPreview.values()
+
+    kapt kaptProcessorDep.values()
+    kapt kaptProcessorDep.room_compiler
+
+    testImplementation testDependencies.values()
+    androidTestImplementation androidTestingDependencies.values()
+
+    debugImplementation "com.github.ChuckerTeam.Chucker:library:3.0.1"
+    releaseImplementation "com.github.ChuckerTeam.Chucker:library-no-op:3.0.1"
+
+    implementation 'com.yanzhenjie.andserver:api:2.1.3'
+    annotationProcessor 'com.yanzhenjie.andserver:processor:2.1.3'
+
+    configurations {
+        all*.exclude group: 'xpp3', module: 'xpp3'
+    }
+}
