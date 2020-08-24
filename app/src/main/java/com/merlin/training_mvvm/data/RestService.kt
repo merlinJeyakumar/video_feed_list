@@ -30,7 +30,7 @@ class RestService private constructor(private val url: String) {
 
         private var instance: RestService? = null
 
-        fun getInstance(url: String = "www.google.com"): RestService {
+        fun getInstance(url: String = "https://bikewise.org/"): RestService {
             if (instance == null) {
                 instance =
                     RestService(url)

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import androidx.lifecycle.Observer
 import com.merlin.training_mvvm.R
 import com.merlin.training_mvvm.databinding.LayoutMainBinding
 import com.merlin.training_mvvm.extension.obtainViewModel
@@ -15,6 +16,7 @@ import com.merlin.training_mvvm.ui.activity.main.fragment.feed_list.FeedListFrag
 import com.merlin.training_mvvm.ui.activity.main.fragment.video_list.VideoListFragment
 import io.reactivex.functions.Consumer
 import kotlinx.android.synthetic.main.layout_main.*
+import org.jetbrains.anko.toast
 
 
 class MainActivity : MActionBarActivity<LayoutMainBinding, MainViewModel>() {
@@ -37,6 +39,7 @@ class MainActivity : MActionBarActivity<LayoutMainBinding, MainViewModel>() {
     }
 
     override fun setUpUI(savedInstanceState: Bundle?) {
+        viewModel.subscribe()
         initPermission()
         initInstance()
         initObserver()
@@ -44,14 +47,15 @@ class MainActivity : MActionBarActivity<LayoutMainBinding, MainViewModel>() {
         initListener()
     }
 
+    private fun initInstance() {
+    }
+
     private fun initListener() {
 
     }
 
-    private fun initInstance() {
+    private fun initObserver() {
     }
-
-    private fun initObserver() {}
 
     private fun initUi() {
         onVideosSelected()
@@ -167,10 +171,6 @@ class MainActivity : MActionBarActivity<LayoutMainBinding, MainViewModel>() {
 
     }
 
-    fun onFab(view: View) {
-
-    }
-
     fun onVideosSelected(view: View? = null) {
         mbtnVideosItem.isChecked = true
         supportFragmentManager
@@ -185,5 +185,10 @@ class MainActivity : MActionBarActivity<LayoutMainBinding, MainViewModel>() {
             .beginTransaction()
             .replace(R.id.fragmentParentViewGroup, FeedListFragment())
             .commit()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        viewModel.unsubscribe()
     }
 }

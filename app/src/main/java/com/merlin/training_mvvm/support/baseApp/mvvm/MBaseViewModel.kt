@@ -9,7 +9,7 @@ import io.reactivex.disposables.Disposable
 
 abstract class MBaseViewModel constructor(application: Application) :
     AndroidViewModel(application) {
-    private val compositeDisposable = CompositeDisposable()
+    val compositeDisposable = CompositeDisposable()
 
     var showLoaderDialog: MutableLiveData<Pair<String, Disposable>> = MutableLiveData()
     var hideLoader: MutableLiveData<Unit> = MutableLiveData()

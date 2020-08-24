@@ -4,5 +4,5 @@ import com.merlin.training_mvvm.domain.models.MovieModel
 import io.reactivex.Single
 
 interface IRestDataSource {
-    fun getMovieList(proximity_square: Int, page: Int): Single<MovieModel>
+    fun getMovieList(page: Int, per_page: Int): Single<MovieModel>
 }

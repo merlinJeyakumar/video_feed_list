@@ -1,5 +1,6 @@
 package com.merlin.training_mvvm.support.utills
 
+import java.text.DateFormat
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
@@ -269,4 +270,8 @@ fun getStringDateFromMillis(
     //dd-M-yyyy hh:mm:ss
     return SimpleDateFormat(formatPattern, Locale.getDefault())
         .format(Date(milliSecond))
+}
+
+fun getUTCTime(): Long {
+    return Calendar.getInstance(TimeZone.getTimeZone("UTC")).timeInMillis
 }

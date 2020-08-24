@@ -6,6 +6,7 @@ apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
 apply plugin: 'com.yanzhenjie.andserver'
 
+def projectName = "VPM"
 androidExtensions {
     experimental = true
 }
@@ -19,6 +20,7 @@ android {
         versionName "1.0"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
+        buildConfigField("String", "API_URL", "\"https://reqres.in/api/\"")
 
         lintOptions {
             checkReleaseBuilds false

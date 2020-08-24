@@ -34,8 +34,8 @@ class RestDataRepository(
     }
 
     override fun getMovieList(
-        proximity_square: Int, page: Int
+        page: Int, per_page: Int
     ): Single<MovieModel> {
-        return service.getMovieModelList(proximity_square, page)
+        return service.getMovieModelList(page, per_page)
     }
 }

@@ -1,7 +1,7 @@
 package com.merlin.training_mvvm
 
 import android.content.Context
-import com.data.database.RoomDataSource
+import com.merlin.training_mvvm.data.database.RoomDataSource
 import com.merlin.training_mvvm.data.database.RoomManager
 import com.merlin.training_mvvm.data.repositories.AppSettingsRepository
 import com.merlin.training_mvvm.data.repositories.local.LocalDataRepository

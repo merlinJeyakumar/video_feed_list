@@ -12,6 +12,6 @@ interface IService {
     @GET("/api/v2/incidents")
     fun getMovieModelList(
         @Query("page") page: Int,
-        @Query("proximity_square") proximity_square: Int
+        @Query("per_page") per_page: Int
     ): Single<MovieModel>
 }
